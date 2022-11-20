@@ -1,0 +1,72 @@
+/*
+    MineSweeper CSS
+    @see ./mineSweeper.js
+*/
+/*
+    Cell
+    cell-covered
+    cell-flagged
+    cell-number
+    cell-mine
+*/
+.board {
+    display: inline-block;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #ccc;
+}
+
+.row {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.cell {
+    vertical-align: top;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.cell {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    background-color: #aaa;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.cell.revealed {
+    background-color: #ddd;
+}
+.cell.revealed.mine {
+    background-color: #f00;
+}
+.cell.revealed.mine::after {
+    content: "💣";
+}
+
+.cell.flagged {
+    background-color: #ff0;
+}
+.cell.flagged::after {
+    content: "🚩";
+}
