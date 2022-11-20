@@ -313,6 +313,8 @@ export default class MineSweeper extends React.Component {
 
     // Create a function to start the timer
     startTimer = () => {
+        // gameTimerInterval clear
+        clearInterval(this.state.gameTimerInterval);
         const gameTimerInterval = setInterval(() => {
             this.setState({ gameTimer: this.state.gameTimer + 1 });
         }, 1000);
