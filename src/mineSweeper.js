@@ -156,6 +156,7 @@ export default class MineSweeper extends React.Component {
             gameMessage: '',
             gameTimer: 0
         });
+        this.handleGameEnd();
         this.startTimer();
         this.setState({ board });
     }

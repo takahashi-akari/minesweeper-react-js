@@ -2,13 +2,6 @@
     MineSweeper CSS
     @see ./mineSweeper.js
 */
-/*
-    Cell
-    cell-covered
-    cell-flagged
-    cell-number
-    cell-mine
-*/
 .board {
     display: inline-block;
     border: 1px solid #000;

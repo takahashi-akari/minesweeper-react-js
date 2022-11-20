@@ -1,5 +1,5 @@
 # MineSweeper React JS
-This is a simple minesweeper game made with React JS.
+This is a simple minesweeper game made with React JS. 💣 🚩 ✨
 
 ## How to play
 - Click on a cell to reveal it
@@ -14,7 +14,7 @@ This is a simple minesweeper game made with React JS.
 - Open `http://localhost:3000/` in your browser
 
 ## Live demo
-https://minesweeper-react-js-ja.herokuapp.com/
+https://minesweeper-react-js-ja.herokuapp.com/ 👀
 
 ## License
 MIT License (c) 2022 Takahashi Akari <akaritakahashioss@gmail.com>
