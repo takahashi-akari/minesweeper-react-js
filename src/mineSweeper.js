@@ -42,7 +42,6 @@ export default class MineSweeper extends React.Component {
 
         this.handleCellLeftClick = this.handleCellLeftClick.bind(this);
         this.handleCellRightClick = this.handleCellRightClick.bind(this);
-        this.handleCellDoubleClick = this.handleCellDoubleClick.bind(this);
         this.handleGameEnd = this.handleGameEnd.bind(this);
         this.handleGameDifficultyChange = this.handleGameDifficultyChange.bind(this);
 
@@ -231,7 +230,6 @@ export default class MineSweeper extends React.Component {
                 className={`cell ${isRevealed ? 'revealed' : ''} ${isFlagged ? 'flagged' : ''}`}
                 onClick={() => this.handleCellClick(i, j)}
                 onContextMenu={(e) => this.handleCellRightClick(e, i, j)}
-                onDoubleClick={() => this.handleCellDoubleClick(i, j)}
             >
                 {isRevealed && isMine && <span role="img" aria-label="bomb">💣</span>}
                 {isRevealed && !isMine && surroundingMines > 0 && surroundingMines}
@@ -280,20 +278,6 @@ export default class MineSweeper extends React.Component {
         if (cell.isRevealed) return;
         cell.isFlagged = !cell.isFlagged;
         this.setState({ board });
-    }
-
-    // Create a function to handle the double click event
-    handleCellDoubleClick = (row, col) => {
-        const { board, gameStatus } = this.state;
-        if (gameStatus !== 'playing') return;
-        const cell = board[row][col];
-        if (!cell.isRevealed) return;
-        const neighbors = this.getNeighbors(row, col);
-        const flaggedNeighbors = neighbors.filter((neighbor) => neighbor.isFlagged);
-        if (flaggedNeighbors.length !== cell.surroundingMines) return;
-        neighbors.forEach((neighbor) => {
-            if (!neighbor.isRevealed) this.revealCell(neighbor.row, neighbor.col);
-        });
     }
 
     // Create a function to handle the game over event
