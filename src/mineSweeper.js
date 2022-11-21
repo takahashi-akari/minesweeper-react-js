@@ -471,6 +471,7 @@ const Cell = ({ cell, handleCellLeftClick, handleCellRightClick, handleCellDoubl
     const cellClassName = `cell ${isRevealed ? 'revealed' : ''} ${isMine ? 'mine' : ''} ${
         isFlagged ? 'flagged' : ''
     }`;
+    // surroundingMines is span and number-? class
     return (
         <div
             className={cellClassName}
@@ -478,7 +479,7 @@ const Cell = ({ cell, handleCellLeftClick, handleCellRightClick, handleCellDoubl
             onContextMenu={(e) => handleCellRightClick(e, cell)}
             onDoubleClick={() => handleCellDoubleClick(cell)}
         >
-            {isRevealed && !isMine && surroundingMines > 0 && surroundingMines}
+            {isRevealed && !isMine && surroundingMines > 0 && <span className={`number-${surroundingMines}`}>{surroundingMines}</span>}
         </div>
     );
 }

@@ -63,3 +63,28 @@
 .cell.flagged::after {
     content: "🚩";
 }
+
+span.number-1 {
+    color: #00d;
+}
+span.number-2 {
+    color: #090;
+}
+span.number-3 {
+    color: #d00;
+}
+span.number-4 {
+    color: #00d;
+}
+span.number-5 {
+    color: #900;
+}
+span.number-6 {
+    color: #000;
+}
+span.number-7 {
+    color: #900;
+}
+span.number-8 {
+    color: #009;
+}
