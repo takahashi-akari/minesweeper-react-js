@@ -1,6 +1,9 @@
 /*
     MineSweeper CSS
-    @see ./mineSweeper.js
+    @version 1.0
+    @date 2022-11-21
+    @author: Takahashi Akari
+    @license: MIT
 */
 .board {
     display: inline-block;
