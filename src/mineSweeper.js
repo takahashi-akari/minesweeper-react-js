@@ -406,7 +406,7 @@ export default class MineSweeper extends React.Component {
                         cell={cell}
                         handleCellLeftClick={this.handleCellLeftClick}
                         handleCellRightClick={this.handleCellRightClick}
-                        handleCellDoubleClick={this.handleCellDoubleClick}
+                        handleCellDoubleClick={this.handleCellRightClick}
                     />
                 ))}
             </div>
