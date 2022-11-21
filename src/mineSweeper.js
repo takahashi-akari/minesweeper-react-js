@@ -9,6 +9,7 @@
 import React from 'react';
 import './mineSweeper.css';
 
+
 // React component
 export default class MineSweeper extends React.Component {
     constructor(props) {
