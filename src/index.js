@@ -5,12 +5,15 @@ import MineSweeper from './mineSweeper';
 import reportWebVitals from './reportWebVitals';
 import Header from './header';
 import Footer from './footer';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Content from './content';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header />
     <MineSweeper />
+    <Content />
     <Footer />
   </React.StrictMode>
 );

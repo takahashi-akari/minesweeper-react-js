@@ -400,7 +400,7 @@ export default class MineSweeper extends React.Component {
     renderBoard = () => {
         const { board } = this.state;
         return board.map((row, rowIndex) => (
-            <div key={rowIndex} className="row">
+            <div key={rowIndex} className="rowm">
                 {row.map((cell, colIndex) => (
                     <Cell
                         key={colIndex}
@@ -435,8 +435,8 @@ export default class MineSweeper extends React.Component {
     renderGameDifficulty = () => {
         const { gameDifficulty, gameDifficultySettings } = this.state;
         return (
-            <div className="game-difficulty">
-                <select value={gameDifficulty} onChange={this.handleGameDifficultyChange}>
+            <div className="game-difficulty form-group">
+                <select className="form-control" value={gameDifficulty} onChange={this.handleGameDifficultyChange}>
                     {Object.keys(gameDifficultySettings).map((difficulty) => (
                         <option key={difficulty} value={difficulty}>
                             {difficulty}
@@ -456,7 +456,7 @@ export default class MineSweeper extends React.Component {
                 <div className="board">{this.renderBoard()}</div>
                 <div>
                 <button
-                    className="game__button"
+                    className="game__button btn btn-primary"
                     onClick={() => this.startGame()}
                 >
                 Reset</button>
