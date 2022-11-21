@@ -6,9 +6,9 @@
     @version 1.0.0
 */
 
+import { useEffect, useState } from 'react';
 import React from 'react';
 import './mineSweeper.css';
-
 
 // React component
 export default class MineSweeper extends React.Component {
@@ -231,7 +231,7 @@ export default class MineSweeper extends React.Component {
                 key={`${i}-${j}`}
                 className={`cell ${isRevealed ? 'revealed' : ''} ${isFlagged ? 'flagged' : ''}`}
                 onClick={() => this.handleCellClick(i, j)}
-                onContextMenu={(e) => this.handleCellRightClick(e, i, j)}
+                onContextMenu={(e) => this.handleCellRightClick(i, j)}
             >
                 {isRevealed && isMine && <span role="img" aria-label="bomb">💣</span>}
                 {isRevealed && !isMine && surroundingMines > 0 && surroundingMines}
@@ -271,9 +271,8 @@ export default class MineSweeper extends React.Component {
     }
 
     // Create a function to handle the right click event
-    handleCellRightClick = (e, row, col) => {
+    handleCellRightClick = (row, col) => {
         const row2 = row.row, col2 = row.col;
-        e.preventDefault();
         const { board, gameStatus } = this.state;
         if (gameStatus !== 'playing') return;
         const cell = board[row2][col2];
@@ -472,13 +471,37 @@ const Cell = ({ cell, handleCellLeftClick, handleCellRightClick, handleCellDoubl
     const cellClassName = `cell ${isRevealed ? 'revealed' : ''} ${isMine ? 'mine' : ''} ${
         isFlagged ? 'flagged' : ''
     }`;
-    // surroundingMines is span and number-? class
+
+    const useLongPress = (callback = () => {}, ms = 300) => {
+        const [startLongPress, setStartLongPress] = useState(false);
+
+        useEffect(() => {
+            let timerId;
+            if (startLongPress) {
+                timerId = setTimeout(callback, ms);
+            } else {
+                clearTimeout(timerId);
+            }
+            return () => {
+                clearTimeout(timerId);
+            };
+        }, [callback, ms, startLongPress]);
+
+        return {
+            onMouseDown: () => setStartLongPress(true),
+            onMouseUp: () => setStartLongPress(false),
+            onMouseLeave: () => setStartLongPress(false),
+        };
+    };
+
+    const longPress = useLongPress((e) => handleCellRightClick(cell), 600);
     return (
         <div
             className={cellClassName}
             onClick={() => handleCellLeftClick(cell)}
-            onContextMenu={(e) => handleCellRightClick(e, cell)}
-            onDoubleClick={() => handleCellRightClick(cell)}
+            onContextMenu={(e) => handleCellRightClick(cell)}
+            onDoubleClick={(e) => handleCellRightClick(cell)}
+            {...longPress}
         >
             {isRevealed && !isMine && surroundingMines > 0 && <span className={`number-${surroundingMines}`}>{surroundingMines}</span>}
         </div>
