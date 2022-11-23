@@ -142,7 +142,7 @@ export default class MineSweeper extends React.Component {
         const { gameTimer } = this.state;
         this.setState({
             gameStatus: 'gameWin',
-            gameMessage: `You Win! Time: ${gameTimer}`
+            gameMessage: `🎉 You Win! Time: ${gameTimer} 🎉`
         });
     }
 
