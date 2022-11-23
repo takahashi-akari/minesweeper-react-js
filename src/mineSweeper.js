@@ -408,7 +408,7 @@ export default class MineSweeper extends React.Component {
         return (
             <div className="game-status">
                 <span>{gameMessage}</span>
-                {gameMessage !== '' && (
+                {gameStatus !== 'gameWin' && (
                     <CustomModal message={gameMessage} />
                 )}
             </div>
