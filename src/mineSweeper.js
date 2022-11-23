@@ -494,7 +494,7 @@ const Cell = ({ cell, handleCellLeftClick, handleCellRightClick, handleCellDoubl
         };
     };
 
-    const longPress = useLongPress((e) => handleCellRightClick(cell), 600);
+    const longPress = useLongPress((e) => handleCellRightClick(cell), 300);
     return (
         <div
             className={cellClassName}
