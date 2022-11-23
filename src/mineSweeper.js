@@ -9,7 +9,7 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 import './mineSweeper.css';
-
+import CustomModal from './customModal';
 // React component
 export default class MineSweeper extends React.Component {
     constructor(props) {
@@ -239,23 +239,6 @@ export default class MineSweeper extends React.Component {
         );
     }
 
-    // Create a function to render the game
-    renderGame = () => {
-        const { board, gameStatus, gameMessage, gameTimer } = this.state;
-        return (
-            <div className="game">
-                <div className="game-header">
-                    <div className="game-status">{gameStatus}</div>
-                    <div className="game-message">{gameMessage}</div>
-                    <div className="game-timer">{gameTimer}</div>
-                </div>
-                <div className="game-board">
-                    {this.renderBoard(board)}
-                </div>
-            </div>
-        );
-    }
-
     // Create a function to handle the click event
     handleCellClick = (row, col) => {
         const row2 = row.row, col2 = row.col;
@@ -412,7 +395,6 @@ export default class MineSweeper extends React.Component {
             </div>
         ));
     }
-
     // Create a function to render the game status
     renderGameStatus = () => {
         const { gameStatus, gameMessage, gameTimer } = this.state;
@@ -426,6 +408,9 @@ export default class MineSweeper extends React.Component {
         return (
             <div className="game-status">
                 <span>{gameMessage}</span>
+                {gameMessage !== '' && (
+                    <CustomModal message={gameMessage} />
+                )}
             </div>
         );
     }
